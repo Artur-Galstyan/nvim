@@ -33,7 +33,7 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "prettier",
-    "svelte",
+    "svelte-language-server",
 
     -- c/cpp stuff
     "clangd",
@@ -42,6 +42,9 @@ M.mason = {
     -- python stuff
     "ruff",
     "pyright",
+
+    "ocaml-lsp",
+    "debugpy"
   },
 }
 

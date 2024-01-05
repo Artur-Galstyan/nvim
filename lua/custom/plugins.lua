@@ -2,24 +2,91 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    "GCBallesteros/NotebookNavigator.nvim",
+    keys = {
+      {
+        "]h",
+        function()
+          require("notebook-navigator").move_cell "d"
+        end,
+      },
+      {
+        "[h",
+        function()
+          require("notebook-navigator").move_cell "u"
+        end,
+      },
+      { "<leader>X", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
+      { "<leader>x", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+    },
+    dependencies = {
+      "echasnovski/mini.comment",
+      "hkupty/iron.nvim", -- repl provider
+      -- "akinsho/toggleterm.nvim", -- alternative repl provider
+      -- "benlubas/molten-nvim", -- alternative repl provider
+      "anuvyklack/hydra.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      local nn = require "notebook-navigator"
+      nn.setup { activate_hydra_keys = "<leader>h" }
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
     },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("core.utils").load_mappings "dap"
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    ft = "python",
+    dependencies = { "mfussenegger/nvim-dap" },
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
+    config = function()
+      require("core.utils").load_mappings "dap_python"
+      require("dap-python").setup "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+    end,
+  },
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -38,8 +105,6 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
-
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -72,24 +137,6 @@ local plugins = {
       },
     },
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = "InsertEnter",
-  --   cmd = "Copilot",
-  --   config = function()
-  --     require("copilot").setup {
-  --       panel = {
-  --         auto_refresh = true,
-  --         keymap = {
-  --           accept = "<C-CR>",
-  --         },
-  --       },
-  --       suggestion = {
-  --         auto_trigger = false,
-  --       },
-  --     }
-  --   end,
-  -- },
   {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
