@@ -34,6 +34,7 @@ lspconfig.pyright.setup {
           reportUnusedImport = "none",
           reportUnknownMemberType = "none",
           reportFunctionMemberAccess = "none",
+          reportPrivateImportUsage = "none",
         },
       },
     },

@@ -8,6 +8,9 @@ vim.opt.updatetime = 50
 vim.g.copilot_assume_mapped = true
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.opt.swapfile = false
+-- set pumheight to 5
+vim.opt.pumheight = 5
+
 
 vim.api.nvim_create_autocmd("VimEnter", {
   desc = "Auto select virtualenv Nvim open",
@@ -40,4 +43,5 @@ vim.api.nvim_command("autocmd!")
 vim.api.nvim_command("autocmd BufWritePre *.ml,*.svelte silent! Neoformat")
 vim.api.nvim_command("augroup END")
 
-
+-- run :clearjumps on vim startup
+vim.api.nvim_command("autocmd VimEnter * silent! clearjumps")

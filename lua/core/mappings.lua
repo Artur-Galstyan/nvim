@@ -298,6 +298,7 @@ M.nvterm = {
     -- toggle in terminal mode
     ["<leader>tft"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
@@ -305,6 +306,7 @@ M.nvterm = {
 
     ["<leader>tht"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
@@ -312,6 +314,7 @@ M.nvterm = {
 
     ["<leader>tvt"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle vertical term",
@@ -322,6 +325,7 @@ M.nvterm = {
     -- toggle in normal mode
     ["<leader>tft"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "float"
       end,
       "Toggle floating term",
@@ -329,6 +333,7 @@ M.nvterm = {
 
     ["<leader>tht"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "horizontal"
       end,
       "Toggle horizontal term",
@@ -336,21 +341,24 @@ M.nvterm = {
 
     ["<leader>tvt"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle vertical term",
     },
 
     -- new
-    ["<leader>h"] = {
+    ["<leader>tnh"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").new "horizontal"
       end,
       "New horizontal term",
     },
 
-    ["<leader>v"] = {
+    ["<leader>tnv"] = {
       function()
+        vim.cmd("noautocmd")
         require("nvterm.terminal").new "vertical"
       end,
       "New vertical term",
