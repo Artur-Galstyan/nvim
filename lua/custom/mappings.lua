@@ -5,7 +5,6 @@ M.general = {
   n = {
     ["<leader>ut"] = { ":UndotreeToggle<CR>" },
     ["<leader>zm"] = { ":ZenMode<CR>" },
-    ["ö"] = { ":bd<CR>" },
     ["J"] = { "mzJ`z" },
     ["<C-d>"] = { "<C-d>zz" },
     ["<C-u>"] = { "<C-u>zz" },

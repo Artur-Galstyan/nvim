@@ -8,7 +8,6 @@ vim.opt.updatetime = 50
 vim.g.copilot_assume_mapped = true
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.opt.swapfile = false
--- set pumheight to 5
 vim.opt.pumheight = 5
 
 
