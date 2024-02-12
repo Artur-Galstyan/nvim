@@ -10,6 +10,14 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.opt.swapfile = false
 vim.opt.pumheight = 5
 
+-- Remaps for Mac
+vim.api.nvim_command("nmap º <A-j>")
+vim.api.nvim_command("nmap ∆ <A-k>")
+--vim.api.nvim_command("nmap @ <A-l>")
+vim.api.nvim_command("nmap Ø <A-O>")
+vim.api.nvim_command("nmap ø <A-o>")
+vim.api.nvim_command("nmap ª <A-h>")
+
 
 vim.api.nvim_create_autocmd("VimEnter", {
   desc = "Auto select virtualenv Nvim open",
@@ -26,7 +34,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
   ["Find Under"] = "<C-g>",
-  ["Select All"] = "<leader>A"
+  ["Select All"] = "<leader>A",
+  ["Add Cursor Down"] = "<A-j>",
+  ["Add Cursor Up"] = "<A-k>"
 }
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
@@ -44,3 +54,6 @@ vim.api.nvim_command("augroup END")
 
 -- run :clearjumps on vim startup
 vim.api.nvim_command("autocmd VimEnter * silent! clearjumps")
+
+-- set snippet path
+vim.g.vscode_snippets_path = vim.fn.expand("~/.config/nvim/snippets")

@@ -1,0 +1,18 @@
+{
+  "Katex Inline": {
+    "prefix": "ktx",
+    "body": ["<Katex math={\"$1\"} />"],
+    "description": "Default inline Katex"
+  },
+  "Katex DisplayMode": {
+    "prefix": "ktxd",
+    "body": ["<Katex math={`$1`} displayMode/>"],
+    "description": "Default displayMode Katex"
+  },
+
+  "Pre Code": {
+    "prefix": "pc",
+    "body": ["<pre><code class=\"language-python\">{`$1`}</code></pre>"],
+    "description": "Pre Code"
+  }
+}
