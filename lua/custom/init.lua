@@ -43,7 +43,7 @@ vim.g.copilot_tab_fallback = ""
 
 vim.api.nvim_command "augroup python_auto_format"
 vim.api.nvim_command "autocmd!"
-vim.api.nvim_command "autocmd BufWritePre *.py silent! Neoformat ruff | silent! Neoformat isort"
+vim.api.nvim_command "autocmd BufWritePre *.py silent! Neoformat ruff"
 vim.api.nvim_command "augroup END"
 
 vim.api.nvim_command "augroup Neoformat_auto"
