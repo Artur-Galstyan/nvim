@@ -8,55 +8,18 @@ local plugins = {
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup {
-        -- Configuration here, or leave empty to use defaults
       }
     end,
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
     },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("core.utils").load_mappings "dap"
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    ft = "python",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
-    config = function()
-      require("core.utils").load_mappings "dap_python"
-      require("dap-python").setup "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-    end,
-  },
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -107,6 +70,14 @@ local plugins = {
     },
   },
   {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {
+      floating_window = false,
+    },
+    config = function(_, opts) require'lsp_signature'.setup(opts) end
+  },
+  {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
   },
@@ -120,13 +91,10 @@ local plugins = {
       search_venv_managers = true,
       search_workspace = true,
     },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-    keys = {
+    event = "VeryLazy",     keys = {
       {
-        -- Keymap to open VenvSelector to pick a venv.
         "<leader>vs",
         "<cmd>:VenvSelect<cr>",
-        -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
         "<leader>vc",
         "<cmd>:VenvSelectCached<cr>",
       },

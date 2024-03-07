@@ -1,16 +1,14 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
-
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "ocamllsp", "tsserver",  "svelte", "ruff_lsp" }
+local servers = { "html", "cssls", "tsserver", "svelte", "ruff_lsp", "pyright", "astro" }
 
 for _, lsp in ipairs(servers) do
   local config = {
     on_attach = on_attach,
     capabilities = capabilities,
   }
-
   lspconfig[lsp].setup(config)
 end
 
@@ -35,13 +33,15 @@ lspconfig.pyright.setup {
           reportUnknownMemberType = "none",
           reportFunctionMemberAccess = "none",
           reportPrivateImportUsage = "none",
+          reportMissingTypeStubs = "none",
+          reportAttributeAccessIssue = "none",
         },
       },
     },
   },
 }
 
--- C 
+-- C
 lspconfig.clangd.setup {
   on_attach = on_attach,
   capabilities = capabilities,

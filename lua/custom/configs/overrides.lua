@@ -2,6 +2,7 @@ local M = {}
 
 M.treesitter = {
   ensure_installed = {
+    "astro",
     "vim",
     "lua",
     "html",
@@ -34,6 +35,7 @@ M.mason = {
     "deno",
     "prettier",
     "svelte-language-server",
+    "astro-language-server",
 
     -- c/cpp stuff
     "clangd",
@@ -44,7 +46,7 @@ M.mason = {
     "pyright",
 
     "ocaml-lsp",
-    "debugpy"
+    "debugpy",
   },
 }
 

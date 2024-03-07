@@ -45,26 +45,26 @@ M.copilot = {
   },
 }
 
-M.dap = {
-  plugin = true,
-  n = {
-    ["<leader>dc"] = { ":lua require('dap').continue()<CR>" },
-    ["<leader>ds"] = { ":lua require('dap').step_over()<CR>" },
-    ["<leader>di"] = { ":lua require('dap').step_into()<CR>" },
-    ["<leader>do"] = { ":lua require('dap').step_out()<CR>" },
-    ["<leader>db"] = { ":lua require('dap').toggle_breakpoint()<CR>" },
-  }
-}
-
-M.dap_python = {
-  plugin = true,
-  n = {
-    ["<leader>dpr"] = {
-      function()
-        require("dap-python").test_method()
-      end
-    }
-  }
-}
+-- M.dap = {
+--   plugin = true,
+--   n = {
+--     ["<leader>dc"] = { ":lua require('dap').continue()<CR>" },
+--     ["<leader>ds"] = { ":lua require('dap').step_over()<CR>" },
+--     ["<leader>di"] = { ":lua require('dap').step_into()<CR>" },
+--     ["<leader>do"] = { ":lua require('dap').step_out()<CR>" },
+--     ["<leader>db"] = { ":lua require('dap').toggle_breakpoint()<CR>" },
+--   }
+-- }
+--
+-- M.dap_python = {
+--   plugin = true,
+--   n = {
+--     ["<leader>dpr"] = {
+--       function()
+--         require("dap-python").test_method()
+--       end
+--     }
+--   }
+-- }
 
 return M
