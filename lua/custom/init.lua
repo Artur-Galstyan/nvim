@@ -42,7 +42,7 @@ vim.g.neoformat_enabled_python = { "ruff" }
 
 vim.api.nvim_command "augroup fmt"
 vim.api.nvim_command "autocmd!"
-vim.api.nvim_command "autocmd BufWritePre * | silent! Neoformat"
+vim.api.nvim_command "autocmd BufWritePre * silent! Neoformat"
 vim.api.nvim_command "augroup END"
 
 -- run :clearjumps on vim startup
