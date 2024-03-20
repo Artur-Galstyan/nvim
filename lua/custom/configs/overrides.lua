@@ -44,9 +44,6 @@ M.mason = {
     -- python stuff
     "ruff",
     "pyright",
-
-    "ocaml-lsp",
-    "debugpy",
   },
 }
 
