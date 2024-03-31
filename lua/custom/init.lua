@@ -15,18 +15,6 @@ vim.api.nvim_command "nmap Ø <A-O>"
 vim.api.nvim_command "nmap ø <A-o>"
 vim.api.nvim_command "nmap ª <A-h>"
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  desc = "Auto select virtualenv Nvim open",
-  pattern = "*",
-  callback = function()
-    local venv = vim.fn.findfile("pyproject.toml", vim.fn.getcwd() .. ";")
-    if venv ~= "" then
-      require("venv-selector").retrieve_from_cache()
-    end
-  end,
-  once = true,
-})
-
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
   ["Find Under"] = "<C-g>",

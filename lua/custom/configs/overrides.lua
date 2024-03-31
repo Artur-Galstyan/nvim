@@ -13,6 +13,7 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "python",
   },
   indent = {
     enable = true,
@@ -27,22 +28,18 @@ M.mason = {
     -- lua stuff
     "lua-language-server",
     "stylua",
-
     -- web dev stuff
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
     "prettier",
     "svelte-language-server",
     "astro-language-server",
-
     -- c/cpp stuff
     "clangd",
     "clang-format",
-
     -- python stuff
-    "ruff",
+    "ruff_lsp",
     "pyright",
   },
 }
@@ -52,7 +49,6 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
   renderer = {
     highlight_git = true,
     icons = {

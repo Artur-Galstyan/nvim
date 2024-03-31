@@ -7,14 +7,12 @@ local plugins = {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup {
-      }
+      require("nvim-surround").setup {}
     end,
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-    },
+    dependencies = {},
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -75,30 +73,13 @@ local plugins = {
     opts = {
       floating_window = false,
     },
-    config = function(_, opts) require'lsp_signature'.setup(opts) end
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
   },
   {
     "mg979/vim-visual-multi",
     event = "VeryLazy",
-  },
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-    opts = {
-      -- Your options go here
-      name = { ".venv", "venv" },
-      auto_refresh = false,
-      search_venv_managers = true,
-      search_workspace = true,
-    },
-    event = "VeryLazy",     keys = {
-      {
-        "<leader>vs",
-        "<cmd>:VenvSelect<cr>",
-        "<leader>vc",
-        "<cmd>:VenvSelectCached<cr>",
-      },
-    },
   },
 }
 
