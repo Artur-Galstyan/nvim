@@ -77,10 +77,6 @@ local plugins = {
       require("lsp_signature").setup(opts)
     end,
   },
-  {
-    "mg979/vim-visual-multi",
-    event = "VeryLazy",
-  },
 }
 
 return plugins
