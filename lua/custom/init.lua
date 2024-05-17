@@ -31,3 +31,6 @@ vim.api.nvim_command "autocmd VimEnter * silent! clearjumps"
 
 vim.g.vscode_snippets_path = vim.fn.expand "~/.config/nvim/snippets"
 vim.g.indent_blankline_show_current_context_start = false
+
+-- set actual tab usage on .gd files
+vim.api.nvim_command "autocmd BufRead,BufNewFile *.gd setlocal tabstop=4 shiftwidth=4 expandtab"

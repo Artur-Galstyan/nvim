@@ -2,7 +2,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "svelte", "ruff_lsp", "pyright", "astro" }
+local servers = { "html", "cssls", "tsserver", "svelte", "ruff_lsp", "pyright", "astro", "gdscript" }
 
 for _, lsp in ipairs(servers) do
   local config = {
