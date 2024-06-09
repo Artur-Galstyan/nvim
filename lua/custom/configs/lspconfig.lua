@@ -2,7 +2,7 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "svelte", "ruff_lsp", "pyright", "astro", "gdscript" }
+local servers = { "html", "cssls", "tsserver", "svelte", "ruff", "pyright", "astro", "gdscript" }
 
 for _, lsp in ipairs(servers) do
   local config = {
@@ -12,6 +12,13 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(config)
 end
 
+lspconfig.ruff.setup {
+  on_attach = function(client, _)
+    client.server_capabilities.hoverProvider = false
+  end,
+  capabilities = capabilities,
+}
+
 -- Python
 capabilities.textDocument.publishDiagnostics.tagSupport = { valueSet = { 2 } }
 lspconfig.pyright.setup {
@@ -20,22 +27,24 @@ lspconfig.pyright.setup {
   settings = {
     pyright = {
       autoImportCompletion = true,
+      disableOrganizeImports = true,
     },
     python = {
       analysis = {
-        autoSearchPaths = true,
-        stubPath = "~/.typings/",
-        diagnosticMode = "workspace",
-        typeCheckingMode = "basic",
-        diagnosticSeverityOverrides = {
-          reportGeneralTypeIssues = "none",
-          reportUnusedImport = "none",
-          reportUnknownMemberType = "none",
-          reportFunctionMemberAccess = "none",
-          reportPrivateImportUsage = "none",
-          reportMissingTypeStubs = "none",
-          reportAttributeAccessIssue = "none",
-        },
+        ignore = { "*" },
+        -- autoSearchPaths = true,
+        -- stubPath = "~/.typings/",
+        -- diagnosticMode = "workspace",
+        -- typeCheckingMode = "basic",
+        -- diagnosticSeverityOverrides = {
+        --   reportGeneralTypeIssues = "none",
+        --   reportUnusedImport = "none",
+        --   reportUnknownMemberType = "none",
+        --   reportFunctionMemberAccess = "none",
+        --   reportPrivateImportUsage = "none",
+        --   reportMissingTypeStubs = "none",
+        --   reportAttributeAccessIssue = "none",
+        -- },
       },
     },
   },
